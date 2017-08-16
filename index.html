@@ -1,16 +1,60 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Angular Controller</title>
-  </head>
-  <body ng-app="app">
-    <div ng-controller="StudentController">
-      <p>First name: <input type="text" ng-model="student.firstname" /></p>
-      <p>Last name: <input type="text" ng-model="student.lastname" /></p>
-      <p>Entering {{ student.fullname() }}</p>
-    </div>
-    <script src="js/angular.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJs</title>
+</head>
+<body ng-controller="studentController">
+
+  <h2>Angular JS Sample Application</h2>
+  <table border="0">
+    <tr>
+      <td>Enter first name: </td>
+      <td><input type="text" ng-model="student.firstname"></td>
+    </tr>
+
+    <tr>
+      <td>Enter last name: </td>
+      <td><input type="text" ng-model="student.lastname"></td>
+    </tr>
+
+    <tr>
+      <td>Enter fees: </td>
+      <td><input type="text" ng-model="student.fees"></td>
+    </tr>
+
+    <tr>
+      <td>Enter subject: </td>
+      <td><input type="text" ng-model="subjectName"></td>
+    </tr>
+    <br/>
+    
+    <table border="0">
+      <tr>
+        <td>Name in Upper Case: </td>
+        <td>{{ student.fullname() | uppercase }}</td>
+      </tr>
+
+      <tr>
+        <td>Name in lower case: </td>
+        <td>{{ student.fullname() | lowercase }}</td>
+      </tr>
+
+      <tr>
+        <td>Subject: </td>
+        <td>
+          <ul>
+            <li ng-repeat="subject in student.subjects | filter: subjectName | orderBy: 'marks'">
+              {{ subject.name + ', marks:' + subject.marks }}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+
+  </table>
+
+  <script src="js/angular.js"></script>
+  <script src="js/app.js"></script>
+</body>
 </html>
